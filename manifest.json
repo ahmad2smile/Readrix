@@ -1,0 +1,38 @@
+{
+    "name": "Readrix",
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "chrome_url_overrides": {
+        "newtab": "index.html"
+    },
+    "content_security_policy": {
+        "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self';",
+        "script-src": "self wasm-eval",
+        "unsafe-eval": "object-src self",
+        "unsafe-inline": "self"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.example.com/*"
+            ],
+            "js": [
+                "trunk-template-bde51181791ec27b.js"
+            ]
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "trunk-template-bde51181791ec27b_bg.wasm",
+                "trunk-template-bde51181791ec27b.js"
+            ],
+            "matches": [
+                "*://*.example.com/*"
+            ]
+        }
+    ],
+    "permissions": [
+        "storage"
+    ]
+}
